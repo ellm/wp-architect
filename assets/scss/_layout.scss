@@ -1,0 +1,13 @@
+.layout {
+    @include container;
+}
+
+@import "layout/header";
+
+div.main-wrapper {
+    @import "layout/primary";
+    @import "layout/secondary";
+}
+
+@import "layout/footer";
+

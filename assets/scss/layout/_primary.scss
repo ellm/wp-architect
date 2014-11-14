@@ -1,0 +1,16 @@
+/* ////////////////////////////////////////////////////////////// */
+/*
+/* Primary
+/* All styles for layout go here
+/* Avoid mixing in color, font and decrative styles here
+/*
+/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+section.primary {
+    @include word-wrap;
+
+    // Full Width template get full-width layout.
+    .page-template-page-full-width-php & {
+        @include span($total-columns of $total-columns);
+    }
+}

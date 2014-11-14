@@ -1,0 +1,19 @@
+{
+    "name":  "wpArchitect",
+    "version": "1.0.0",
+    "homepage": "http://matthewell.com",
+    "authors": [
+      "Matthew Ell <me@matthewell.com>"
+    ],
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+      "**/.*",
+      "node_modules"
+    ],
+    "dependencies": {
+        "modernizr": "latest",
+        "breakpoint-sass": "latest",
+        "normalize-css": "latest"
+    }
+}

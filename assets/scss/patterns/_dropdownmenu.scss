@@ -1,0 +1,238 @@
+/* ////////////////////////////////////////////////////////////// */
+/*
+/* Responsive Dropdown Menu
+/*
+/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+.dropdown-menu {
+    max-height: 40px;
+
+    @include breakpoint($bp_480) {
+        max-height: none;
+    }
+
+    .skip-link {
+        @extend %screen-reader-text;
+    }
+
+    /* Reveal Navigation - For Touch
+    -------------------------------------------------------------- */
+    .menu-link {
+        @include font-size(16);
+        display: block;
+        color: $ddmenu-link-color;
+        background-color: $ddmenu-bg-color;
+        text-decoration: none;
+        padding: $gutter-width/2;
+        text-transform: uppercase;
+        font-weight: bold;
+        @include breakpoint($bp_480) {
+           display: none;
+        }
+    }//.menu-link
+
+    /* Reveal Child Links - For Touch
+    -------------------------------------------------------------- */
+    .touch-button {
+        position: absolute;
+        @include font-size(16);
+        top: 0;
+        right: 0;
+        display: block;
+        padding: 0 $gutter-width;
+        line-height: 2;
+        color: #000;
+        background: rgba(0,0,0,0.1);
+        &:hover {
+            cursor: pointer;
+        }
+        @include breakpoint($bp_480) {
+            display: none;
+        }
+    }//.touch-button
+
+    /* Navigation
+    -------------------------------------------------------------- */
+    nav[role="navigation"] {
+        background-color: $ddmenu-bg-color;
+        overflow: hidden;
+        max-height: 0;
+        @include breakpoint($bp_480) {
+            background-color: transparent;
+            overflow: visible;
+            max-height: none;
+        }
+
+        &.active,
+        & > ul ul.active {
+            position: relative;
+            max-height: 55em;
+            z-index: 99999;
+            @include breakpoint($bp_480) {
+                max-height: none;
+                z-index: auto;
+            }
+        }//.active
+
+        /* First Tier Navigation
+        -------------------------------------------------------------- */
+        ul {
+            text-align: left;
+            padding-left: 0;
+            margin: 0;
+            @include breakpoint($bp_480) {
+                text-align: justify;
+            }
+
+            /* Second Tier Navigation (dropdown)
+            -------------------------------------------------------------- */
+            ul {
+                box-shadow: none;
+                display: none;
+                visibility: visible;
+                position: relative;
+                top: 0;
+                width: auto;
+                border-top: 1px solid $ddmenu-border;
+
+                .cssanimations & {
+                    margin: 0;
+                    transition-property:none;
+                    transition-duration:none;
+                    transition-timing-function:none;
+                    opacity: 1;
+                }//.cssanimations
+
+                &.active {
+                    display: block;
+                }
+
+                @include breakpoint($bp_480) {
+                    box-shadow:rgba(0,0,0,0.2) 0 3px 3px;
+                    display: block;
+                    visibility: hidden;
+                    background-color: $ddmenu-bg-color;
+                    position: absolute;
+                    top: 40px;
+                    left: 0;
+                    z-index: 99999;
+                    width: 19em;
+                    padding: 0;
+
+                    .cssanimations & {
+                        margin: -20px 0 0 0;
+                        _margin: 0; /*IE6 only*/
+                        transition-property:all;
+                        transition-duration:.2s;
+                        transition-timing-function:ease-in-out;
+                        opacity: 0;
+                    }//.cssanimations
+                }//breakpoint 480
+
+                li {
+                    padding-left: 0;
+                    white-space: nowrap;
+                    @include breakpoint($bp_480) {
+                        position: relative;
+                        display: block;
+                        margin: 0;
+                        padding: 0 0 0 $gutter-width;
+                        line-height: 2;
+                    }//breakpoint 480
+
+                    a {
+                        display: block;
+                        text-transform: capitalize;
+                        &:hover {
+
+                        }
+                    }
+                }//li
+
+                /* Third Tier Navigation (flyout)
+                -------------------------------------------------------------- */
+                ul {
+                    background-color: $ddmenu-bg-color-expanded-tier3;
+                    left: 100%;
+                    top: 0;
+
+                    a {
+                        &:hover {
+
+                        }
+                    }//a
+                }//ul
+
+                &:after {
+                    display: none;
+                }//ul:after
+            }//ul Second Tier
+
+            /* List Items - First Tier and Inherited
+            -------------------------------------------------------------- */
+            li {
+                position: relative; // Position dropdown relative to menu item
+                border-bottom: 1px solid $ddmenu-border;
+                display: block;
+                *display: block;
+
+                 @include breakpoint($bp_480) {
+                    display:inline-block;
+                    *display: inline;
+                    *zoom: 1;
+                    line-height: 40px;
+                    &:hover {
+                        > ul {
+                            visibility: visible; // Display Dropdown
+                            .cssanimations & {
+                                opacity: 1;
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+
+                &.last-child {
+                    border: 0;
+                }
+
+                a {
+                    display: block;
+                    padding: .5em;
+                    @include breakpoint($bp_480) {
+                        @include font-size(14);
+                        padding: 0;
+                        display: inline;
+                    }
+                }
+            } //li
+        }// ul First Tier
+
+        /* Arrows after Menu Parent Items
+        -------------------------------------------------------------- */
+        li.menuParent:after {
+            display: none;
+            @include breakpoint($bp_480) {
+                display: inline-block;
+                content: " ▼";
+                font-size: .75em;
+                padding-left: .25em;
+                color: $ddmenu-link-color;
+            }
+        }//li.menuParent
+
+        /* For Justified Menu Alignment
+        -------------------------------------------------------------- */
+        ul:after {
+          display: none;
+          @include breakpoint($bp_480) {
+              display: inline-block;
+              content: '';
+              width: 100%;
+              display: inline-block;
+              font-size: 0;
+              line-height: 0;
+          }
+        }
+    }//nav[role="navigation"]
+}//div.dropdownmenu

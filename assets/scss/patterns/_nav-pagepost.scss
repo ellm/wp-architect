@@ -1,0 +1,27 @@
+/* ////////////////////////////////////////////////////////////// */
+/*
+/* Paging and Post Navigation
+/*
+/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+.site-navigation {
+    margin: $gutter-width 0;
+    a {
+        text-decoration: none;
+    }
+}
+
+.paging-navigation,
+.post-navigation {
+    @extend %cf;
+    margin: $gutter-width 0;
+
+    .nav-previous {
+        @extend .button;
+        float: left;
+    }
+    .nav-next {
+        @extend .button;
+        float: right;
+    }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "wp-architect",
+  "version": "1.0.0",
+  "author": "Matthew Ell <me@matthewell.com>",
+  "description": "Grunt Package for WP Architect WordPress Theme",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ellm/wp-architect.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ellm/wp-architect/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "scripts": {
+    "postinstall": "node_modules/.bin/bower install"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-autoprefixer": "~0.8.2",
+    "grunt-contrib-sass": "~0.7.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-imagemin": "~0.5.0",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-uglify": "~0.3.3",
+    "grunt-modernizr": "~0.5.1",
+    "grunt-newer": "~0.6.1",
+    "grunt-svg2png": "~0.2.1",
+    "bower": "~0.9.1",
+    "time-grunt": "~0.2.10",
+    "load-grunt-tasks": "~0.6.0",
+    "matchdep": "~0.3.0"
+  }
+}
