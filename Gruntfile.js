@@ -6,16 +6,6 @@ module.exports = function(grunt) {
     // Show elapsed time
     require('time-grunt')(grunt);
 
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-autoprefixer');
-    grunt.loadNpmTasks("grunt-modernizr");
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-newer');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-svg2png');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-
     grunt.initConfig({
 
         //autoprefixer
@@ -23,7 +13,7 @@ module.exports = function(grunt) {
           options: {
             browsers: ['Android >= 2.1', 'Chrome >= 21', 'Explorer >= 8', 'Firefox >= 17', 'Opera >= 12.1', 'Safari >= 6.0']
           },
-          dev: {
+          dist: {
             options: {
               map: {
                 prev: 'assets/css/'
@@ -46,7 +36,7 @@ module.exports = function(grunt) {
         },
 
         sass: {
-            dist: {
+            dev: {
                 options: {
                     style: 'expanded',
                     require: 'susy'
@@ -127,30 +117,42 @@ module.exports = function(grunt) {
                 tasks: ['svg2png'],
             },
 
-            compass: {
+            sass: {
                 files: ['assets/scss/*.scss', 'assets/scss/**/*.scss'],
-                tasks: ['sass', 'newer:autoprefixer:dev', 'newer:cssmin'],
-            },
-
-            js: {
-                files: ['assets/js/*.js', 'assets/js/**/*.js'],
-                tasks: ['newer:uglify']
+                tasks: ['sass'],
             },
         }
     });
 
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
+	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks("grunt-modernizr");
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-newer');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-svg2png');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
+
     // Register Tasks
     grunt.registerTask('default', [
         'sass',
-        'newer:autoprefixer:dev',
+        'uglify',
+        'modernizr',
+        'newer:cssmin'
+    ]);
+
+    grunt.registerTask('dev', [
+        'watch'
+    ]);
+
+    grunt.registerTask('dist', [
+    	'sass',
+        'newer:autoprefixer:dist',
         'newer:cssmin',
         'uglify',
         'modernizr',
         'newer:imagemin',
         'newer:svg2png'
-    ]);
-
-    grunt.registerTask('dev', [
-        'watch'
     ]);
 };

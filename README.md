@@ -15,7 +15,9 @@ also be used as a boilerplate for building custom WordPress themes.
  
 ##Install:
 * `npm install` - Install development package via NPM
-* `grunt dev` - Get Developing!
+* `grunt` - Set Up...
+* `grunt dev` - Get Developing...
+* `grunt dist` - Ship!
 
 ##References:
 Lots of help from:
