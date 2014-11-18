@@ -200,4 +200,8 @@ function my_sidebar_class_replace($c=''){
   }
 }
 
- ?>
+add_action('wp_footer', 'wp_arch_debugStat', 999 );
+function wp_arch_debugStat() {
+	if ( WP_DEBUG === true ) { print '<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~DEBUG ACTIVE ~~~~~~~~~~~~~~~~~~~~~~~~~~-->';}
+}
+
