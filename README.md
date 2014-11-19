@@ -2,18 +2,16 @@
 ============
 ###Just Another Boilerplate for Crafting Custom WordPress Themes
 
-wp-architect is a academic theme focused on collecting best practices, 
-documentation, tips and references for theme developers. This theme can 
-also be used as a boilerplate for building custom WordPress themes. 
-
 ##Uses:
-* Grunt.JS. Packaged with (Modernizr, ImageMin and helpful workflow enhancers)
-* Normalize.css for resetting CSS
-* SASS
-* Helpful Mixins
-* [Susy Grid Framework](http://susy.oddbird.net/) Mobile-First Develpoment
+* [npm](https://www.npmjs.org/)
+* [Grunt](http://gruntjs.com/)
+* [Bower](http://bower.io/)
+* [Susy Grid Framework](http://susy.oddbird.net/) 
+* [Breakpoint](https://github.com/at-import/breakpoint) Media Queries 
+* [Normalize.CSS](http://necolas.github.io/normalize.css/)
+* [Modernizr](http://modernizr.com/)
  
-##Install:
+##Quick Start:
 * `npm install` - Install development package via NPM
 * `grunt` - Set Up...
 * `grunt dev` - Get Developing...
