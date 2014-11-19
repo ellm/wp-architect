@@ -1,9 +1,9 @@
 {
     "name":  "wpArchitect",
     "version": "1.0.0",
-    "homepage": "http://matthewell.com",
+    "homepage": "http://www.liqui-site.com",
     "authors": [
-      "Matthew Ell <me@matthewell.com>"
+      "Liqui-Team <info@liqui-site.com>"
     ],
     "license": "MIT",
     "private": true,

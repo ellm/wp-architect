@@ -54,7 +54,7 @@ module.exports = function(grunt) {
             },
             combine: {
                 files: {
-                  'assets/css/global.min.css': ['assets/vendor/normalize-css/normalize.css','assets/css/global.css'],
+                  'assets/css/global.min.css': ['bower_components/normalize-css/normalize.css','assets/css/global.css'],
                 },
             },
         },
@@ -85,8 +85,8 @@ module.exports = function(grunt) {
         // Modernizr Grunt - custom modernizr build.
         modernizr: {
             build: {
-                devFile: 'assets/vendor/modernizr/modernizr.js',
-                outputFile: 'assets/js/vendor/modernizr.min.js',
+                devFile: 'bower_components/modernizr/modernizr.js',
+                outputFile: 'assets/js/modernizr.min.js',
                 files : {
                     'src' : [
                         ['assets/scss/*.scss'],
@@ -109,7 +109,7 @@ module.exports = function(grunt) {
             },
 
             html: {
-                files: ['*.html', '*.php']
+                files: ['*.php']
             },
 
             img: {
