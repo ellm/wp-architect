@@ -13,15 +13,15 @@
 
 .paging-navigation,
 .post-navigation {
-    @extend %cf;
+    @include clear-fix();
     margin: $gutter-width 0;
 
     .nav-previous {
-        @extend .button;
+        @include button($base-button-color,$base-button-text-color);
         float: left;
     }
     .nav-next {
-        @extend .button;
+        @include button($base-button-color,$base-button-text-color);
         float: right;
     }
 }

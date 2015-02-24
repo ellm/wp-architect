@@ -1,13 +1,8 @@
 <?php
 /**
- * Not Found
- *
  * Loaded when a the loop returns no results
  *
- * @since           1.0.0
- *
- * @package         WordPress
- * @subpackage      wp_arch
+ * @package WordPress
  */
  ?>
 <article id="post-0" class="post no-results not-found">

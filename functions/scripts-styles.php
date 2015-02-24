@@ -2,19 +2,7 @@
 /**
  * Register and Enqueue Scripts.
  *
- * http://codex.wordpress.org/Function_Reference/wp_enqueue_script
- *
- * @since       1.0.0
- *
- * @package     WordPress
- * @subpackage  Functions (functions.php)
- */
-
-/**
- * Registers and Enqueues scripts and styles.
- * @return various
- * @author ellm
- * @since  1.0.0
+ * @package WordPress
  */
 function wp_arch_scripts_and_styles() {
     // If is NOT admin area...
@@ -30,7 +18,11 @@ function wp_arch_scripts_and_styles() {
 		* Enqueue Modernizr Script
 		*
 		*/
-        wp_enqueue_script('modernizr', get_stylesheet_directory_uri() . '/assets/js/modernizr.min.js', array(), null, false);
+		if ( WP_DEBUG === true ) {
+        	wp_enqueue_script('modernizr', get_stylesheet_directory_uri() . '/assets/js/modernizr.js', array(), null, false);
+        } else {
+        	wp_enqueue_script('modernizr', get_stylesheet_directory_uri() . '/assets/js/modernizr.prod.min.js', array(), null, false);
+        }
 
 		/**
 		* Enqueue Site Scripts
@@ -55,17 +47,16 @@ function wp_arch_scripts_and_styles() {
 		*/
         // Check to load development or production
         if ( WP_DEBUG === true ) {
-        	wp_enqueue_style('normalize', get_stylesheet_directory_uri() . '/bower_components/normalize-css/normalize.css', array(), 'all');
-        	wp_enqueue_style('styles', get_stylesheet_directory_uri() . '/assets/css/global.css', array('normalize'), 'all');
+        	wp_enqueue_style('common_styles', get_stylesheet_directory_uri() . '/assets/css/global.css', array(), null, 'all');
         } else {
-        	wp_enqueue_style('styles', get_stylesheet_directory_uri() . '/assets/css/global.min.css', array(), 'all');
+        	wp_enqueue_style('common_styles', get_stylesheet_directory_uri() . '/assets/css/global.min.css', array(), null, 'all');
         }
 
         /**
         * Enqueue Live Reload on local server
         *
         */
-        if ( $_SERVER["SERVER_ADDR"] == '192.168.50.4' ) {
+        if ( WP_DEBUG === true ) {
             wp_enqueue_script('wp_arch_livereload', '//192.168.50.4:35729/livereload.js?snipver=1', array(), true);
         }
 

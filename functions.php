@@ -24,11 +24,12 @@ include_once TEMPLATEPATH . '/functions/scripts-styles.php';
  */
 include_once TEMPLATEPATH . '/functions/theme-support.php';
 /**
+ * Register Items for Theme
+ */
+include_once TEMPLATEPATH . '/functions/register.php';
+/**
  * Various function snippets
  */
 include_once TEMPLATEPATH . '/functions/snippets.php';
-
-/* Optional Includes */
-//include_once TEMPLATEPATH . '/functions/custom-post-types.php';
 
  ?>

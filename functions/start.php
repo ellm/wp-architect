@@ -2,18 +2,15 @@
 /**
  * Initialize Theme Functions
  *
- * @since       1.0.0
- *
- * @package     WordPress
- * @subpackage  Functions (functions.php)
+ * @package WordPress
  */
 
-/*************************************************************************************************
+/**
 * Set the content width based on the theme's design and stylesheet.
 */
 if ( ! isset( $content_width ) ) $content_width = 640; /* pixels */
 
-/*************************************************************************************************
+/**
 * We're firing all out initial functions at the start.
 */
 add_action('after_setup_theme','wp_arch_start', 15);
@@ -27,16 +24,14 @@ function wp_arch_start() {
 
     // Launching this stuff after theme setup
     add_action('after_setup_theme','wp_arch_theme_support');
+    add_action('after_setup_theme','wp_arch_menus_init');
+
+    // Init Widgets
+    add_action( 'widgets_init', 'wp_arch_widgets_init' );
 }
 
-
 /**
- * Removes various nodes from the head element.
- *
- * @see     wp_arch_start()
- * @return  NULL
- * @author  ellm
- * @since   1.0.0
+ * Removes various nodes from the head element
  */
 function wp_arch_head_cleanup() {
     // category feeds
@@ -57,7 +52,4 @@ function wp_arch_head_cleanup() {
     remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
     // WP version
     remove_action( 'wp_head', 'wp_generator' );
-
 }
-
- ?>

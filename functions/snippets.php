@@ -2,57 +2,15 @@
 /**
  * Various Customizations and Options.
  *
- * @since       1.0.0
- *
- * @package     WordPress
- * @subpackage  Functions (functions.php)
+ * @package WordPress
  */
 
-/*************************************************************************************************
-* Remove Menu items from WP Admin Console
-*/
 
 /**
- * Remove Menu items from WP Admin Console
- * @param string    $hook              The name of the action to which $function_to_add is hooked.
- * @param callback  $function_to_add   The name of the function you wish to be hooked.
+ * Display navigation to next/previous pagination
  */
-// add_action( 'admin_menu', 'wp_arch_remove_menu_pages' );
-
-/**
- * Menu Pages to be removed from the WP Admin
- * @return boolean
- * @author ellm
- * @since  1.0.0
- */
-function wp_arch_remove_menu_pages() {
-    /**
-     * Remove Tools Menu item from WP Admin
-     * @param  string    $menu_slug    The slug of the menu
-     */
-    remove_menu_page('tools.php');
-}
-
-/*************************************************************************************************
-* Display navigation to next/previous pages when applicable.
-*/
-
-/**
- * Display navigation to next/previous pages when applicable.
- * @author ellm
- * @since 1.0.0
- */
-
-// Function exists do...
 if ( ! function_exists( 'wp_arch_content_nav' ) ) :
 
-    /**
-     * Customize post/page pagination
-     * @param  string   $nav_id   ID of navigation menu
-     * @return various
-     * @author ellm
-     * @since  1.0.0
-     */
     function wp_arch_content_nav( $nav_id ) {
 
         // Access the global variables from within function
@@ -96,24 +54,17 @@ if ( ! function_exists( 'wp_arch_content_nav' ) ) :
 
         <?php endif; ?>
 
-        </nav><?php //echo $nav_id; ?>
+        </nav>
         <?php
     }
 endif;
 
-/*************************************************************************************************
-* Prints HTML with meta information for the current post-date/time and author.
-*/
 
-// Function exists do...
+/**
+ * Prints HTML with meta information for the current post-date/time and author.
+ */
 if ( ! function_exists( 'wp_arch_posted_on' ) ) :
-    /**
-     * Print post meta information in custom format
-     *
-     * @return various
-     * @author ellm
-     * @since  [version]
-     */
+
     function wp_arch_posted_on() {
         printf( __( 'Posted on <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate>%4$s</time></a><span class="byline"> by <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'wp_arch' ),
         esc_url( get_permalink() ),
@@ -128,78 +79,46 @@ if ( ! function_exists( 'wp_arch_posted_on' ) ) :
 
 endif;
 
-/*************************************************************************************************
-* Sets the post excerpt length to 40 words.
-*/
+/**
+ * Prints HTML with meta information for the footer of post
+ */
+if ( !function_exists('wp_arch_footer_meta') ) :
 
+	function wp_arch_footer_meta() {
+		// Categories
+		$categories_list = get_the_category_list( __( ', ', 'wp_arch' ) );
+		if ( $categories_list ) :
+			printf( __( '<span class="cat-links">Posted in %1$s</span><span class="sep"> | </span>', 'wp_arch' ), $categories_list );
+		endif;
+		// Tags
+		$tags_list = get_the_tag_list( '', __( ', ', 'wp_arch' ) );
+		if ( $tags_list ) :
+			printf( __( '<span class="tags-links">Tagged %1$s</span><span class="sep"> | </span>', 'wp_arch' ), $tags_list );
+		endif;
+		// Comments
+		if ( comments_open() || ( '0' != get_comments_number() && ! comments_open() ) ) :
+			echo '<span class="comments-link">';
+			comments_popup_link( __( 'Leave a comment', 'wp_arch' ), __( '1 Comment', 'wp_arch' ), __( '% Comments', 'wp_arch' ) );
+			echo '</span>';
+		endif;
+		// Edit Post Link
+		edit_post_link( __( 'Edit', 'wp_arch' ), '<br/><br/><span class="edit-link">', '</span>' );
+	}
+
+endif;
+
+
+/**
+ * Set the post excerpt length to 40 words.
+ */
 add_filter( 'excerpt_length', 'wp_arch_excerpt_length' );
 function wp_arch_excerpt_length( $length ) {
     return 40;
 }
 
-/*************************************************************************************************
-* Returns a "Continue Reading" link for excerpts
-*/
-function wp_arch_continue_reading_link() {
-    return ' <a href="'. esc_url( get_permalink() ) . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'wp_arch' ) . '</a>';
-}
-
-// Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis
-add_filter( 'excerpt_more', 'wp_arch_auto_excerpt_more' );
-function wp_arch_auto_excerpt_more( $more ) {
-    return ' &hellip;' . wp_arch_continue_reading_link();
-}
-
-// Adds a pretty "Continue Reading" link to custom post excerpts.
-add_filter( 'get_the_excerpt', 'wp_arch_custom_excerpt_more' );
-function wp_arch_custom_excerpt_more( $output ) {
-    if ( has_excerpt() && ! is_attachment() ) {
-        $output .= wp_arch_continue_reading_link();
-    }
-    return $output;
-}
-
-/*************************************************************************************************
-* Hook into body_class() and add custom class on pages w/ a sidebar
-*/
-// Do in wp_head - create anon function and store values in a buffer
-add_action('wp_head', create_function("",'ob_start();') );
-// Do function in get_sidebar
-add_action('get_sidebar', 'my_sidebar_class');
-// Do function in wp_footer
-add_action('wp_footer', 'my_sidebar_class_replace');
-
 /**
- * Sets sidebar class variables
- * @param   string    $name
- * @return  string
- * @author  ellm
- * @since   1.0.0
+ * Debug Mode
  */
-function my_sidebar_class($name=''){
-  static $class="has-sidebar";
-  // if $name is not empty, concatenate string to variable
-  if(!empty($name))$class.=" sidebar-{$name}";
-  // if is empty, run function
-  my_sidebar_class_replace($class);
-}
-
-/**
- * Sets body class with sidebar class
- * @param  string    $c     Sets class variable
- * @return string
- * @author ellm
- * @since  1.0.0
- */
-function my_sidebar_class_replace($c=''){
-  static $class='';
-  if(!empty($c))$class.=$c;
-  else {
-    echo str_replace('<body class="','<body class="'.$class.' ',ob_get_clean());
-    ob_start();
-  }
-}
-
 add_action('wp_footer', 'wp_arch_debugStat', 999 );
 function wp_arch_debugStat() {
 	if ( WP_DEBUG === true ) { print '<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~DEBUG ACTIVE ~~~~~~~~~~~~~~~~~~~~~~~~~~-->';}

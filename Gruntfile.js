@@ -1,18 +1,16 @@
 'use strict';
 
 module.exports = function(grunt) {
-    // Show elapsed time
-    // require('time-grunt')(grunt);
 
     grunt.initConfig({
     	pkg: grunt.file.readJSON('package.json'),
 
-        //
+        // Sass
         sass: {
 	        options: {
 	        	require: 'susy',
 	            sourceMap: true,
-				outputStyle: 'compressed'
+				outputStyle: 'nested'
 	        },
             dev: {
                 files: {
@@ -20,6 +18,74 @@ module.exports = function(grunt) {
                 }
             }
         },
+
+        // Autoprefixer
+        autoprefixer: {
+          options: {
+            browsers: ['Android >= 2.1', 'Chrome >= 21', 'Explorer >= 8', 'Firefox >= 17', 'Opera >= 12.1', 'Safari >= 6.0']
+          },
+          dist: {
+            options: {
+              map: {
+                prev: 'assets/css/'
+              }
+            },
+            src: 'assets/css/global.css'
+          }
+        },
+
+        // Svg
+        svg2png: {
+            all: {
+                files: [
+                    // rasterize SVG file to same directory
+                    { src: ['assets/img/*.svg'] }
+                ]
+            }
+        },
+
+        // Minify CSS
+        cssmin: {
+            options: {
+                banner: '/*! Processed <%= grunt.template.today("dddd, mmmm dS, yyyy, h:MM:ss TT") %> */\n'
+            },
+            combine: {
+                files: {
+                  'assets/css/global.min.css': ['assets/css/global.css'],
+                },
+            },
+        },
+
+        //Uglify/Minification for JS files
+        uglify: {
+            options: {
+                banner: '/*! Processed <%= grunt.template.today("dddd, mmmm dS, yyyy, h:MM:ss TT") %> */\n'
+            },
+            build: {
+                src: ['assets/js/common.js'],
+                dest: 'assets/js/min/common.min.js'
+            }
+        },
+
+        // Modernizr Grunt - custom modernizr build.
+        modernizr: {
+            build: {
+                devFile: 'assets/js/modernizr.js',
+                outputFile: 'assets/js/min/modernizr.prod.min.js',
+                files : {
+                    'src' : [
+                        ['assets/scss/*.scss'],
+                        ['assets/scss/**/*.scss'],
+                        ['assets/js/common.js'],
+                        ['assets/js/src/*.js'],
+                        ['assets/js/src/**/*.js']
+                    ]
+                },
+                uglify : true,
+                parseFiles : true,
+            }
+        },
+
 
         // Watch Task
         watch: {
@@ -33,14 +99,19 @@ module.exports = function(grunt) {
                 files: ['*.php']
             },
 
+            js: {
+                files: ['assets/js/*.js'],
+                tasks: ['modernizr','uglify']
+            },
+
             img: {
                 files: ['assets/img/*.svg'],
-                tasks: ['svg2png'],
+                tasks: ['newer:svg2png'],
             },
 
             sass: {
                 files: ['assets/scss/*.scss', 'assets/scss/**/*.scss'],
-                tasks: ['sass'],
+                tasks: ['sass','newer:autoprefixer:dist'],
             },
         }
     });
@@ -48,23 +119,24 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks("grunt-modernizr");
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-newer');
+	grunt.loadNpmTasks('grunt-svg2png');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     // Register Tasks
     grunt.registerTask('default', [
-        'sass'
-    ]);
-
-    grunt.registerTask('dev', [
-        'watch'
-    ]);
-
-    grunt.registerTask('dist', [
-    	'sass',
+        'sass',
         'newer:autoprefixer:dist',
         'newer:cssmin',
         'uglify',
         'modernizr',
-        'newer:imagemin',
         'newer:svg2png'
+    ]);
+
+    grunt.registerTask('dev', [
+        'watch'
     ]);
 };

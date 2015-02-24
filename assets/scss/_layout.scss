@@ -1,13 +1,30 @@
+///////////////////////////////////////////////////////////////
+// Layout - Structure Styles
+// Avoid adding rules for Typography, Color, ect.
+///////////////////////////////////////////////////////////////
 .layout {
     @include container;
 }
 
-@import "layout/header";
-
-div.main-wrapper {
-    @import "layout/primary";
-    @import "layout/secondary";
+header[role="banner"] {
+    clear: both;
 }
 
-@import "layout/footer";
+div.main-wrapper {
+    section.primary {
+        @include word-wrap;
+
+        // Full Width template get full-width layout.
+        .page-template-page-full-width-php & {
+            @include span($total-columns of $total-columns);
+        }
+    }
+    div.secondary {
+        @include word-wrap;
+    }
+}
+
+footer.page-footer {
+    clear: both;
+}
 

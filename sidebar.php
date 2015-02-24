@@ -1,13 +1,8 @@
 <?php
 /**
- * Sidebar
+ * The template for displaying the sidebar
  *
- * The Sidebar containing the main widget areas.
- *
- * @since           1.0.0
- *
- * @package         WordPress
- * @subpackage      wp_arch
+ * @package WordPress
  */
 ?>
 <div class="secondary widget-area" role="complementary">
@@ -16,14 +11,14 @@
 
 		<aside id="search" class="widget widget_search">
 			<?php get_search_form(); ?>
-		</aside><!-- #search -->
+		</aside>
 
 		<aside id="archives" class="widget">
 			<h1 class="widget-title"><?php _e( 'Archives', 'wp_arch' ); ?></h1>
 			<ul>
 				<?php wp_get_archives( array( 'type' => 'monthly' ) ); ?>
 			</ul>
-		</aside><!-- #archives -->
+		</aside>
 
 		<aside id="meta" class="widget">
 			<h1 class="widget-title"><?php _e( 'Meta', 'wp_arch' ); ?></h1>
@@ -32,7 +27,7 @@
 				<li><?php wp_loginout(); ?></li>
 				<?php wp_meta(); ?>
 			</ul>
-		</aside><!-- #meta -->
+		</aside>
 
 	<?php endif; ?>
-</div><!-- .secondary -->
+</div>

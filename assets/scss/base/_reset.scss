@@ -1,42 +1,18 @@
-/* ////////////////////////////////////////////////////////////// */
-/*
-/* Base
-/* Added dafaults in addion to Normalize.css.
-/* ~~~~~~ This file should not be edited. ~~~~~~~~~~~~~~~~~~~~~
-/*
-/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+///////////////////////////////////////////////////////////////
+// Base - Added defaults in addion to Normalize.css.
+///////////////////////////////////////////////////////////////
 
 
-/* Body
--------------------------------------------------------------- */
+// Body
+///////////////////////////////////////////////////////////////
 body {
-    // Sets base font-family defined @ref: _base-variables.scss.
     font-family: $base-font-family;
-    // Sets base font-size using mixin @ref: _base-mixins.scss.
     @include font-size(16);
-    // Sets base line-height.
-    line-height: 1.3;
 }
 
-/* Blockquote
-/* Markup: <blockquote><p></p><cite></cite></blockquote>
--------------------------------------------------------------- */
-blockquote {
-    // Blockquote cite is aligned right with top margin for better legibility.
-    cite {
-        display: block;
-        text-align: right;
-        margin-top: $gutter-width;
-        &:before {
-            content: "– "
-        }
-    }
-}
-
-/* Inline
--------------------------------------------------------------- */
+// Inline
+///////////////////////////////////////////////////////////////
 a {
-    // Base link colors @ref: _base-mixins.scss.
     @include link-set($base-link-color, $base-link-color, $base-link-color, $base-link-color);
         // All text links get underline of hover.
         &:hover {text-decoration: underline;}
@@ -49,8 +25,8 @@ abbr {
     }
 }
 
-/* Hr
--------------------------------------------------------------- */
+// Hr
+///////////////////////////////////////////////////////////////
 hr {
     // Sexy HR assistant styles.
     clear: both;
@@ -58,8 +34,8 @@ hr {
     margin: $gutter-width 0;
 }
 
-/* Form Elements
--------------------------------------------------------------- */
+// Form Elements
+///////////////////////////////////////////////////////////////
 label {
     // Call more attention to label. Increase scanability.
     font-weight: bold;
@@ -99,8 +75,8 @@ input[type="submit"] {
     @include button($base-button-color, $base-button-text-color);
 }
 
-/* Table
--------------------------------------------------------------- */
+// Table
+///////////////////////////////////////////////////////////////
 table {
     // Set default table styles for data
     border-collapse: collapse;
@@ -122,8 +98,8 @@ td {
     padding: 0.2em;
 }
 
-/* Media
--------------------------------------------------------------- */
+// Media
+///////////////////////////////////////////////////////////////
 // Make sure media fit their containers
 img,
 embed,
@@ -131,4 +107,5 @@ iframe,
 object,
 video {
     max-width: 100%;
+    height: auto;
 }

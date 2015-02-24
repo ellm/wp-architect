@@ -3,7 +3,7 @@
 .sass-cache
 node_modules
 bower_components
+/assets/css/global.css.map
 *.min.js
 *.min.css
 /assets/css/*
-
