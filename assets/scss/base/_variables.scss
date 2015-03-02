@@ -14,7 +14,7 @@ $susy: (
   gutter-position: after,
   container: auto,
   container-position: center,
-  columns: 4,
+  columns: $total-columns,
   gutters: .25,
   column-width: false,
   global-box-sizing: border-box,
@@ -38,12 +38,6 @@ $susy: (
 // Border Box Boxsizing
 ///////////////////////////////////////////////////////////////
 @include border-box-sizing;
-
-// Brakepoint
-///////////////////////////////////////////////////////////////
-$breakpoint-no-queries:               false;
-$breakpoint-no-query-fallbacks:       true;
-$bp_480:                              30em,  'no-query' '.oldie'; //Default Mobile 480/16
 
 // Colors
 ///////////////////////////////////////////////////////////////

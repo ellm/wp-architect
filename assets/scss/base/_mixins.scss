@@ -2,7 +2,32 @@
 // Mixins Directives
 ///////////////////////////////////////////////////////////////
 
-// Mixin for rem Font Sizing and px fallback
+// Reponsive Breakpoints
+// @link https://medium.com/@timknight/creating-a-dead-simple-sass-mixin-to-handle-responsive-breakpoints-889927b37740
+///////////////////////////////////////////////////////////////
+@mixin breakpoint($class) {
+  @if $class == bp_480 {
+    @media (min-width: 30em) { @content; }
+  }
+
+  // @else if $class == sm {
+  //   @media (min-width: 768px) { @content; }
+  // }
+
+  // @else if $class == md {
+  //   @media (min-width: 992px) { @content; }
+  // }
+
+  // @else if $class == lg {
+  //   @media (min-width: 1200px) { @content; }
+  // }
+
+  @else {
+    @warn "Breakpoint mixin supports: bp_480";
+  }
+}
+
+// Rem Font Sizing and px fallback
 ///////////////////////////////////////////////////////////////
 @mixin font-size($sizeValue: 1.6) {
   font-size: $sizeValue + px;

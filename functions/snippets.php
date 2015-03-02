@@ -35,7 +35,7 @@ if ( ! function_exists( 'wp_arch_content_nav' ) ) :
 
         ?>
         <nav role="navigation" id="<?php echo $nav_id; ?>" class="<?php echo $nav_class; ?>">
-            <h1 class="assistive-text"><?php _e( 'Post navigation', 'wp_arch' ); ?></h1>
+            <h1 class="screen-reader-text"><?php _e( 'Post navigation', 'wp_arch' ); ?></h1>
 
         <?php if ( is_single() ) : // navigation links for single posts ?>
 
@@ -88,19 +88,23 @@ if ( !function_exists('wp_arch_footer_meta') ) :
 		// Categories
 		$categories_list = get_the_category_list( __( ', ', 'wp_arch' ) );
 		if ( $categories_list ) :
-			printf( __( '<span class="cat-links">Posted in %1$s</span><span class="sep"> | </span>', 'wp_arch' ), $categories_list );
+			printf( __( '<span class="cat-links">Posted in %1$s</span>', 'wp_arch' ), $categories_list );
 		endif;
 		// Tags
 		$tags_list = get_the_tag_list( '', __( ', ', 'wp_arch' ) );
 		if ( $tags_list ) :
-			printf( __( '<span class="tags-links">Tagged %1$s</span><span class="sep"> | </span>', 'wp_arch' ), $tags_list );
+			printf( __( '<span class="sep"> | </span><span class="tags-links">Tagged %1$s</span>', 'wp_arch' ), $tags_list );
 		endif;
-		// Comments
-		if ( comments_open() || ( '0' != get_comments_number() && ! comments_open() ) ) :
-			echo '<span class="comments-link">';
-			comments_popup_link( __( 'Leave a comment', 'wp_arch' ), __( '1 Comment', 'wp_arch' ), __( '% Comments', 'wp_arch' ) );
+		// Comments Link on Blog Index Only
+		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) && !is_page() ) {
+			echo '<span class="sep"> | </span><span class="comments-link">';
+			comments_popup_link( __( 'Leave a comment', 'wp_arch' ), __( '1 Comment', 'wp_arch' ), __( '% Comments', 'twentyfifteen' ) );
 			echo '</span>';
-		endif;
+		}
+		// Comment Form Template on Single Post
+		if ( is_single() ) {
+			comments_template();
+		}
 		// Edit Post Link
 		edit_post_link( __( 'Edit', 'wp_arch' ), '<br/><br/><span class="edit-link">', '</span>' );
 	}

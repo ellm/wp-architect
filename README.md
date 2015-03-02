@@ -37,8 +37,6 @@ See also [Keep A Change Log](http://keepachangelog.com/)
 - Changes to Grunt.js
 	- Change - Compile SASS to style.css file in Root (Cuts down extra HTTP Request)
 	- Change - Minify all JS into single file? (Plugins, Common); Keep page specific separated / make inline?
-- Remove Bower Dependency 
-	- Change - Replace Breakpoint SASS with a custom mixin
 
 ## [2.0][2015_02_12]
 For release 2.0
@@ -83,6 +81,7 @@ Informed by: HTML5bp and _S
 	- Change - Revert back to single Grunt Task / Run all via 'Watch'
 - Remove Bower Dependency 
 	- Change - Move Modernizr and Normalize CSS out of build process and into project repo (to be manually updated).
+	- Change - Replace Breakpoint SASS with a custom mixin
 - Functions
 	- Added wp_arch_footer_meta() used in content.php
 
