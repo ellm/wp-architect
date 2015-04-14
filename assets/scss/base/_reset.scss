@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////
-// Base - Added defaults in addion to Normalize.css.
+// Base - Overrides Normalize.css.
 ///////////////////////////////////////////////////////////////
 
 
@@ -86,12 +86,14 @@ table {
 
 th {
     // Set default table styles for data
+    border: 1px solid #ccc;
     text-align: left;
     padding: 0.2em;
 }
 
 td {
     // Set default table styles for data
+    border: 1px solid #ccc;
     padding: 0.2em;
 }
 

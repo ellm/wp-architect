@@ -66,4 +66,4 @@ $base-active-link-color:                lighten($base-link-color, 10%);
 $base-sticky-color:                     #ffffcc;
 $base-border-color:                     #ccc;
 $base-button-color:                     #ccc;
-$base-button-text-color:                #333;
+$base-button-text-color:                $base-link-color;

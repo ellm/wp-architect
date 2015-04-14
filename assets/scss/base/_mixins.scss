@@ -89,6 +89,7 @@
 ///////////////////////////////////////////////////////////////
 @mixin button ($color , $textcolor) {
     background: $color;
+    border: none;
     display: inline-block;
     color: $textcolor;
     padding: .5em 1em;
