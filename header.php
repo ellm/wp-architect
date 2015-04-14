@@ -14,6 +14,9 @@
 		<link rel="profile" href="http://gmpg.org/xfn/11" />
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 		<?php wp_head(); ?>
+		<!--[if IE 8]>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
 	</head>
 	<body <?php body_class(); ?>>
 	   <!--[if lt IE 8]>
@@ -26,7 +29,7 @@
 	            <h2><?php bloginfo( 'description' ); ?></h2>
 	            <nav role="navigation">
 	                <h1 class="screen-reader-text"><?php _e( 'Main menu', 'wp_arch' ); ?></h1>
-	                <div class="skip-link screen-reader-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'wp_arch' ); ?>"><?php _e( 'Skip to content', 'wp_archstarter' ); ?></a></div>
+	                <div class="skip-link screen-reader-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'wp_arch' ); ?>"><?php _e( 'Skip to content', 'wp_arch' ); ?></a></div>
 	                <?php wp_nav_menu( array(
 	                'theme_location' => 'main-nav',
 	                'depth' => 2,
