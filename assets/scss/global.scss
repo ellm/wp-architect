@@ -1,12 +1,18 @@
 ///////////////////////////////////////////////////////////////
-// Load all SCSS
+// Load all SCSS partials
 ///////////////////////////////////////////////////////////////
 @import "../../node_modules/susy/sass/susy";
-// Base
-@import "base/variables";
-@import "base/mixins";
-@import "base/normalize";
-@import "base/reset";
-
+// Core partials
+@import "core/variables";
+@import "core/mixins";
+@import "core/normalize";
+@import "core/reset";
+@import "core/typography";
+// Theme partials
 @import "layout";
 @import "modules";
+
+///////////////////////////////////////////////////////////////
+// Theme Styles
+// All other styles go here
+///////////////////////////////////////////////////////////////
