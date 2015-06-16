@@ -105,8 +105,6 @@ if ( !function_exists('wp_arch_footer_meta') ) :
 		if ( is_single() ) {
 			comments_template();
 		}
-		// Edit Post Link
-		edit_post_link( __( 'Edit', 'wp_arch' ), '<br/><br/><span class="edit-link">', '</span>' );
 	}
 
 endif;

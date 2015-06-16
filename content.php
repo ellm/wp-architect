@@ -30,8 +30,10 @@
         </div>
     <?php endif; ?>
 
-    <footer class="entry-meta">
-        <?php wp_arch_footer_meta(); ?>
+    <footer class="entry-footer">
+    	<div class="entry-meta">
+        	<?php wp_arch_footer_meta(); ?>
+        </div>
     </footer>
 
 </article>
