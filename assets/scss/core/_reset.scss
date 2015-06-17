@@ -8,6 +8,7 @@
 body {
     font-family: $base-font-family;
     @include font-size(16);
+    line-height: 1.4;
 }
 
 // Inline
@@ -61,6 +62,7 @@ input[type="email"],
 input[type="url"],
 input[type="number"],
 textarea {
+	border: 1px solid #ccc;
     // Sets width of field to fit wrapper; Pushes field to next line.
     width: 98%;
     // Add some space between text and field border.

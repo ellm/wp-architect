@@ -66,7 +66,7 @@ endif;
 if ( ! function_exists( 'wp_arch_posted_on' ) ) :
 
     function wp_arch_posted_on() {
-        printf( __( 'Posted on <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate>%4$s</time></a><span class="byline"> by <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'wp_arch' ),
+        printf( __( '<p>Posted on <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate>%4$s</time></a><span class="byline"> by <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span></p>', 'wp_arch' ),
         esc_url( get_permalink() ),
         esc_attr( get_the_time() ),
         esc_attr( get_the_date( 'c' ) ),
@@ -85,6 +85,7 @@ endif;
 if ( !function_exists('wp_arch_footer_meta') ) :
 
 	function wp_arch_footer_meta() {
+		echo "<p>";
 		// Categories
 		$categories_list = get_the_category_list( __( ', ', 'wp_arch' ) );
 		if ( $categories_list ) :
@@ -101,6 +102,7 @@ if ( !function_exists('wp_arch_footer_meta') ) :
 			comments_popup_link( __( 'Leave a comment', 'wp_arch' ), __( '1 Comment', 'wp_arch' ), __( '% Comments', 'twentyfifteen' ) );
 			echo '</span>';
 		}
+		echo "</p>";
 		// Comment Form Template on Single Post
 		if ( is_single() ) {
 			comments_template();
