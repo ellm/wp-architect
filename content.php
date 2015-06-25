@@ -17,7 +17,7 @@
         <?php endif; ?>
     </header>
 
-    <?php if ( is_search() || is_archive() ) : // Only display Excerpts for Search and Archive pages ?>
+    <?php if ( is_home() || is_search() || is_archive() ) : // Only display Excerpts for Blog (Home), Search and Archive pages ?>
         <div class="entry-summary">
             <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
             <?php the_excerpt(); ?>
