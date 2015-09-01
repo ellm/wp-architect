@@ -32,4 +32,4 @@ include_once TEMPLATEPATH . '/functions/register.php';
  */
 include_once TEMPLATEPATH . '/functions/snippets.php';
 
- ?>
+?>

@@ -7,20 +7,22 @@
 ///////////////////////////////////////////////////////////////
 @mixin breakpoint($class) {
   @if $class == bp_480 {
-    @media (min-width: 30em) { @content; }
+    @media (min-width: 30em) {
+      @content;
+    }
   }
 
-  // @else if $class == sm {
-  //   @media (min-width: 768px) { @content; }
-  // }
+    // @else if $class == sm {
+    //   @media (min-width: 768px) { @content; }
+    // }
 
-  // @else if $class == md {
-  //   @media (min-width: 992px) { @content; }
-  // }
+    // @else if $class == md {
+    //   @media (min-width: 992px) { @content; }
+    // }
 
-  // @else if $class == lg {
-  //   @media (min-width: 1200px) { @content; }
-  // }
+    // @else if $class == lg {
+    //   @media (min-width: 1200px) { @content; }
+    // }
 
   @else {
     @warn "Breakpoint mixin supports: bp_480";
@@ -37,84 +39,94 @@
 // Clear Fix for Floats
 ///////////////////////////////////////////////////////////////
 @mixin clear-fix {
-	zoom: 1;
-	&:after { clear: both; }
-	&:after, &:before {
-	    content: "";
-	    display: table;
-	}
+  zoom: 1;
+  &:after {
+    clear: both;
+  }
+  &:after, &:before {
+    content: "";
+    display: table;
+  }
 }
 
 // List Reset
 ///////////////////////////////////////////////////////////////
 @mixin list-reset {
-	list-style: none;
-	padding-left: 0;
+  list-style: none;
+  padding-left: 0;
 }
 
 // Image Replacement
 ///////////////////////////////////////////////////////////////
 @mixin ir {
-	display: block;
-	border: 0;
-	text-indent: -999em;
-	overflow: hidden;
-	background-color: transparent;
-	background-repeat: no-repeat;
-	text-align: left;
-	direction: ltr;
+  display: block;
+  border: 0;
+  text-indent: -999em;
+  overflow: hidden;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  text-align: left;
+  direction: ltr;
 }
 
 // Visually Hidden
 ///////////////////////////////////////////////////////////////
 @mixin vh {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 // Prevents long block level text from breaking outside layout
 ///////////////////////////////////////////////////////////////
 @mixin word-wrap {
-    -ms-word-wrap: break-word;
-    word-wrap: break-word;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
 }
 
 // Default Button
 ///////////////////////////////////////////////////////////////
-@mixin button ($color , $textcolor) {
-    background: $color;
-    border: none;
-    display: inline-block;
-    color: $textcolor;
-    padding: .5em 1em;
+@mixin button($color , $textcolor) {
+  background: $color;
+  border: none;
+  display: inline-block;
+  color: $textcolor;
+  padding: .5em 1em;
 
-    &:hover{
-        background: lighten($color, 3%);
-        color: lighten($textcolor,6%);
-        cursor: pointer;
-        text-decoration: none;
-    }
+  &:hover {
+    background: lighten($color, 3%);
+    color: lighten($textcolor, 6%);
+    cursor: pointer;
+    text-decoration: none;
+  }
 
-    &:focus, &:active, &:visited {
-        color: lighten($textcolor,6%);
-        background: darken($color, 3%);
-        outline: none;
-    }
+  &:focus, &:active, &:visited {
+    color: lighten($textcolor, 6%);
+    background: darken($color, 3%);
+    outline: none;
+  }
 }
 
 // Link Set of States
 ///////////////////////////////////////////////////////////////
 @mixin link-set($color, $colorVisited, $colorHover, $colorFocus) {
-    text-decoration: none;
-    color: $color;
-    &:visited {color: $colorVisited;}
-    &:hover {color: $colorHover;}
-    &:focus {color: $colorFocus;}
-    &:active {color: $colorFocus;}
+  text-decoration: none;
+  color: $color;
+  &:visited {
+    color: $colorVisited;
+  }
+  &:hover {
+    color: $colorHover;
+  }
+  &:focus {
+    color: $colorFocus;
+  }
+  &:active {
+    color: $colorFocus;
+  }
 }

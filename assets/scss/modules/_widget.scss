@@ -4,10 +4,11 @@
 
 .widget {
 
-	.widget-title {}
+  .widget-title {
+  }
 
-    ul {
-        // Reset Widget List
-        @include list-reset();
-    }
+  ul {
+    // Reset Widget List
+    @include list-reset();
+  }
 }

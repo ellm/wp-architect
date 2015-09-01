@@ -3,28 +3,28 @@
 // Avoid adding rules for Typography, Color, ect.
 ///////////////////////////////////////////////////////////////
 .layout {
-    @include container;
+  @include container;
 }
 
 header[role="banner"] {
-    clear: both;
+  clear: both;
 }
 
 div.main-wrapper {
-    section.primary {
-        @include word-wrap;
+  section.primary {
+    @include word-wrap;
 
-        // Full Width template get full-width layout.
-        .page-template-page-full-width-php & {
-            @include span($total-columns of $total-columns);
-        }
+    // Full Width template get full-width layout.
+    .page-template-page-full-width-php & {
+      @include span($total-columns of $total-columns);
     }
-    div.secondary {
-        @include word-wrap;
-    }
+  }
+  div.secondary {
+    @include word-wrap;
+  }
 }
 
 footer.page-footer {
-    clear: both;
+  clear: both;
 }
 

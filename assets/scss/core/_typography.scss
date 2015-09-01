@@ -4,32 +4,37 @@
 
 // Font Sizing
 .font-size-xlarge {
-	@include font-size(32);
+  @include font-size(32);
 }
+
 .font-size-large {
-	@include font-size(28);
+  @include font-size(28);
 }
+
 .font-size-med {
-	@include font-size(20);
+  @include font-size(20);
 }
+
 .font-size-reg {
-	@include font-size(16);
+  @include font-size(16);
 }
+
 .font-size-small {
-	@include font-size(14);
+  @include font-size(14);
 }
 
 // Font Weight
 .font-weight-norm {
-	font-weight: normal;
+  font-weight: normal;
 }
 
 // Font Styles
 .font-headline-xl {
-	@extend .font-size-xlarge;
+  @extend .font-size-xlarge;
 }
+
 .font-headline-l {
-	@extend .font-size-large;
+  @extend .font-size-large;
 }
 
 
