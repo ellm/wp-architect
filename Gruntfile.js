@@ -58,11 +58,6 @@
                 },
             },
 
-            // JS Hint
-            jshint: {
-                all: ['Gruntfile.js', 'assets/js/common.js']
-            },
-
             //Uglify/Minification for JS files
             uglify: {
                 options: {
@@ -122,7 +117,7 @@
 
                 js: {
                     files: ['assets/js/*.js'],
-                    tasks: ['modernizr', 'jshint', 'uglify']
+                    tasks: ['modernizr', 'uglify']
                 },
 
                 img: {
@@ -148,7 +143,6 @@
         grunt.loadNpmTasks('grunt-contrib-cssmin');
         grunt.loadNpmTasks('grunt-contrib-clean');
         grunt.loadNpmTasks('grunt-contrib-imagemin');
-        grunt.loadNpmTasks('grunt-contrib-jshint');
 
         // Register Tasks
         grunt.registerTask('default', [
@@ -156,7 +150,6 @@
             'sass',
             'newer:autoprefixer:dist',
             'newer:cssmin',
-            'jshint',
             'uglify',
             'modernizr',
             'newer:svg2png',
