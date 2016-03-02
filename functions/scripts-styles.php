@@ -57,7 +57,7 @@ function wp_arch_scripts_and_styles() {
 		 *
 		 */
 		if ( SCRIPT_DEBUG === true ) {
-			wp_enqueue_script( 'wp_arch_livereload', '//192.168.50.4:35729/livereload.js?snipver=1', array(), true );
+			wp_enqueue_script( 'wp_arch_livereload', '//localhost:35729/livereload.js?snipver=1', array(), true );
 		}
 
 	}
